@@ -4,7 +4,8 @@ const cookieParser = require("cookie-parser")
 const helmet = require("helmet")
 const cors = require("cors")
 const session = require("express-session")
-// const usersRouter = require("./users/users-router")
+const usersRouter = require("./users/users-router")
+const itemsRouter = require("./items/items-router")
 
 const server = express()
 
@@ -19,7 +20,8 @@ server.use(cookieParser())
 // 	secret: "keep it secret, keep it safe", // cryptographically sign the cookie
 // }))
 
-// server.use("/api", usersRouter)
+server.use("/api", usersRouter)
+server.use("/api/items", itemsRouter)
 
 server.use((err, req, res, next) => {
 	console.log(err)
