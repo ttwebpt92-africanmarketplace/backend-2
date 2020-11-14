@@ -20,6 +20,11 @@ server.use(cookieParser())
 // 	secret: "keep it secret, keep it safe", // cryptographically sign the cookie
 // }))
 
+server.get("/", (req, res) => {
+	res.json({
+		message: "Welcome to our API",
+	})
+})
 server.use("/api", usersRouter)
 server.use("/api/items", itemsRouter)
 
