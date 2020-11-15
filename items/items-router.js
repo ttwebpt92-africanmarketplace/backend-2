@@ -56,7 +56,7 @@ router.put("/:id", restrict(), validateUserId(), async (req, res, next) => {
         const item = await Items.findById(req.params.id)
         console.log(item)
         if (!item) {
-            res.status(404).json({
+            return res.status(404).json({
                 message: "This item does not exist"
             })
         }
@@ -64,7 +64,7 @@ router.put("/:id", restrict(), validateUserId(), async (req, res, next) => {
         console.log(userId)
         
         if (userId !== item.userId) {
-             res.status(404).json({
+            return res.status(404).json({
                 message: "You dont own this item"
             })
         }
@@ -91,13 +91,20 @@ router.put("/:id", restrict(), validateUserId(), async (req, res, next) => {
     }
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", restrict(), validateUserId(), async (req, res, next) => {
     try {
         const item = await Items.findById(req.params.id)
         console.log(item)
         if (!item) {
-            res.status(404).json({
+            return res.status(404).json({
                 message: "This item does not exist"
+            })
+        }
+        const userId = req.user.id
+
+        if (userId !== item.userId) {
+            return res.status(404).json({
+                message: "You dont own this item"
             })
         }
         const deleteItem = await remove(req.params.id)
