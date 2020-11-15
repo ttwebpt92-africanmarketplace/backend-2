@@ -18,18 +18,17 @@
 | [PUT] Update Item       | `/api/item/:id`          | Valid token/cookie `itemName`, `itemPrice`, `description`, `categoryId`   | `imageUrl` not required                                                                                    |
 | [DELETE] Deletes Item   | `/api/item/:id`          | Valid token/cookie                                                        | Deletes an Item by Id from the database                                                                    |
 
-Item categories 
+<!-- Item categories 
 1	fruit
 2	vegetable
 3	dairy
 4	meat
 5	seasoning
 6	beverage
-7	condiment
+7	condiment -->
 
-
-username, password, email, firstName, lastName, address  are all strings
-itemName, imageUrl are strings
-itemPrice is decimal
-description is text
-categoryId is an integer from 1 to 7
+- username, password, email, firstName, lastName, address are all strings
+- itemName, imageUrl are strings
+- itemPrice is decimal
+- description is text
+- categoryId is an integer from 1 to 7
